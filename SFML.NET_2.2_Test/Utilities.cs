@@ -10,7 +10,7 @@ namespace SFML.NET_2._2_Test
     {
         public float getFPS(DateTime start, DateTime end)
         {
-
+            return 0;
         }
     }
 }
