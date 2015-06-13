@@ -13,9 +13,8 @@ namespace SFML.NET_2._2_Test
     {
         static ContextSettings context = new ContextSettings();
         static RenderWindow window;
+        static RectangleShape rec_bg = new RectangleShape(new System.Vector2f(window.Size.X, window.Size.Y));
         static Texture bg = new Texture("../../holz.jpg");
-        static RectangleShape rec = new RectangleShape(new System.Vector2f(window.Size.X, window.Size.Y));
-
         static Texture mouse_tex = new Texture("../../resources/cursor.png");
         static Texture stein_tex = new Texture("../../resources/stein.png");
         static Sprite mouse_sprite, stein_sprite;
@@ -32,7 +31,8 @@ namespace SFML.NET_2._2_Test
             window = new RenderWindow(new VideoMode(1024, 768), "SFML Window", Styles.Default, context);
             window.SetVerticalSyncEnabled(true);
             window.SetFramerateLimit(60);
-            bg.
+            rec_bg.Texture = bg;
+            rec_bg.Draw(window, RenderStates.Default);
 
             rec.Position = new System.Vector2f(50.0f, 50.0f);
             rec.FillColor = Color.Green;
