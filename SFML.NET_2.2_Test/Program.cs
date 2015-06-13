@@ -13,11 +13,10 @@ namespace SFML.NET_2._2_Test
     {
         static ContextSettings context = new ContextSettings();
         static RenderWindow window;
-        static RectangleShape rec_bg = new RectangleShape(new System.Vector2f(window.Size.X, window.Size.Y));
-        static Texture bg = new Texture("../../holz.jpg");
+        static Texture bg = new Texture("../../resources/holz.jpg");
         static Texture mouse_tex = new Texture("../../resources/cursor.png");
         static Texture stein_tex = new Texture("../../resources/stein.png");
-        static Sprite mouse_sprite, stein_sprite;
+        static Sprite mouse_sprite, stein_sprite, bg_sprite;
         static Text text = new Text("Das ist ein Text", new Font("../../resources/Bruss___.ttf"));
         static Text fps = new Text("0 FPS", new Font("../../resources/Arial.ttf"));
         static RectangleShape rec = new RectangleShape(new System.Vector2f(100.0f, 100.0f));
@@ -31,14 +30,16 @@ namespace SFML.NET_2._2_Test
             window = new RenderWindow(new VideoMode(1024, 768), "SFML Window", Styles.Default, context);
             window.SetVerticalSyncEnabled(true);
             window.SetFramerateLimit(60);
-            rec_bg.Texture = bg;
-            rec_bg.Draw(window, RenderStates.Default);
 
             rec.Position = new System.Vector2f(50.0f, 50.0f);
             rec.FillColor = Color.Green;
+
             stein_sprite = new Sprite(stein_tex);
             stein_sprite.Position = new System.Vector2f(500.0f, 500.0f);
             circle.Position = new System.Vector2f(300.0f, 300.0f);
+
+            bg_sprite = new Sprite(bg);
+            bg_sprite.Scale = new System.Vector2f(window.Size.X, window.Size.Y);
 
             window.Closed += window_Closed;
             window.KeyPressed += window_KeyPressed;
@@ -53,6 +54,7 @@ namespace SFML.NET_2._2_Test
                 startTime = DateTime.Now;
                 window.DispatchEvents();
                 window.Clear();
+                bg_sprite.Draw(window, RenderStates.Default);
                 rec.Draw(window, RenderStates.Default);
                 circle.Draw(window, RenderStates.Default);
                 stein_sprite.Draw(window, RenderStates.Default);
