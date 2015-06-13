@@ -19,7 +19,7 @@ namespace SFML.NET_2._2_Test
         static Sprite mouse_sprite, stein_sprite, bg_sprite;
         static Text text = new Text("Das ist ein Text", new Font("../../resources/Bruss___.ttf"));
         static Text fps = new Text("0 FPS", new Font("../../resources/Arial.ttf"));
-        static RectangleShape rec = new RectangleShape(new System.Vector2f(100.0f, 100.0f));
+        static RectangleShape rec = new RectangleShape(new System.Vector2f(600.0f, 5.0f));
         static CircleShape circle = new CircleShape(50.0f);
         static DateTime startTime;
 
@@ -27,19 +27,19 @@ namespace SFML.NET_2._2_Test
         {
             bg.Repeated = true;
             context.AntialiasingLevel = 16;
-            window = new RenderWindow(new VideoMode(1024, 768), "SFML Window", Styles.Default, context);
+            window = new RenderWindow(new VideoMode(1024, 768), "SFML Window", Styles.None, context);
             window.SetVerticalSyncEnabled(true);
             window.SetFramerateLimit(60);
 
             rec.Position = new System.Vector2f(50.0f, 50.0f);
-            rec.FillColor = Color.Green;
+            rec.FillColor = new Color((byte)46, (byte)15, (byte)0, (byte)200);
 
             stein_sprite = new Sprite(stein_tex);
             stein_sprite.Position = new System.Vector2f(500.0f, 500.0f);
             circle.Position = new System.Vector2f(300.0f, 300.0f);
 
             bg_sprite = new Sprite(bg);
-            bg_sprite.Scale = new System.Vector2f(window.Size.X, window.Size.Y);
+            bg_sprite.TextureRect = new IntRect(0, 0, 1024, 768);
 
             window.Closed += window_Closed;
             window.KeyPressed += window_KeyPressed;
