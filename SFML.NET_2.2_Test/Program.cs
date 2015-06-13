@@ -62,7 +62,7 @@ namespace SFML.NET_2._2_Test
         {
             if(e.Button == Mouse.Button.Left)
             {
-                mouse_sprite.Scale = new System.Vector2f(mouse_sprite.Scale.X * 1.5f, mouse_sprite.Scale.Y * 1.5f);
+                mouse_sprite.Scale = new System.Vector2f(mouse_sprite.Scale.X * 6.5f, mouse_sprite.Scale.Y * 6.5f);
             }
             else if(e.Button == Mouse.Button.Right)
             {
